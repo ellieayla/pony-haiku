@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <h2 class="post-list-heading">{{ site.posts.size }} {{ page.list_title | default: "Posts" }}</h2>
+
+      <ul>
+      {%- for post in site.posts reversed -%}
+          <li>
+                <a class="post-link" href="{{ post.url | relative_url }}">
+                      {{ post.date | date: "%F" }} {{ post.slug }}
+                </a>
+            </li>
+        {%- endfor -%}
+      </ul>
+  {%- endif -%}
+
+</div>
